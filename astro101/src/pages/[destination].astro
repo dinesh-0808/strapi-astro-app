@@ -1,0 +1,24 @@
+---
+export const prerender = true;
+import Layout from "../layouts/Layout.astro";
+import type { GetStaticPaths } from "astro";
+const {destination} = Astro.params;
+export const getStaticPaths = (() => {
+    const destinations = [
+        'sangli',
+        'london',
+        'rome',
+        'sanfrancisco',
+        'singapore',
+        'cairo',  
+    ]
+    
+    return destinations.map((destination) => ({
+        params: {destination}
+    }));
+}) satisfies GetStaticPaths;
+---
+
+<Layout>
+    <h1>Welcome to: {destination}</h1>
+</Layout>
